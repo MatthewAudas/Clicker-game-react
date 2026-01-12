@@ -3,15 +3,20 @@ import './App.js';
 //import './Shop.css';
 
 
-function Shop({ itemID, points, setPoints, priceofItem }) {
+function Shop({ itemID, points, setPoints, priceofItem, setAutoItemCount }) {
 
-        if (points >= priceofItem) {
-            setPoints((p) => p - priceofItem);
-            alert('Item purchased!');
-            priceofItem = Math.round(priceofItem * 1.15);
-        } else {
-            alert('Not enough points to buy this item.');
-        }
+  if (points < priceofItem) {
+    //Change this to a better UI alert later
+    alert('Not enough points to buy this item.');
+    return;
+  }
 
+  setPoints(p => p - priceofItem);
+
+  if (itemID === 2) {
+    // Add buy alert later
+    setAutoItemCount(c => c + 1);
+  }
 }
+
 export default Shop;

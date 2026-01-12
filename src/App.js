@@ -1,5 +1,5 @@
 
-import React, { useState} from 'react';
+import React, { useEffect, useState} from 'react';
 import './App.css';
 import './Shop.js';
 import Shop from './Shop.js';
@@ -16,12 +16,23 @@ function PressButton({ onPress, children }) {
 }
 
 
+
 function App() {
 
   const [points, setPoints] = useState(1);
-
+  const [autoItemCount, setAutoItemCount] = useState(0);
   const handlePress = () => setPoints((p) => p + x);
 
+  useEffect(() => {
+  if (autoItemCount === 0) return;
+
+  const interval = setInterval(() => {
+    setPoints(p => p + autoItemCount);
+  }, 3000);
+
+  return () => clearInterval(interval);
+}, [autoItemCount]);
+  
   return (
     <div className="App">
       <header className="App-header">
@@ -30,10 +41,10 @@ function App() {
           <PressButton onPress={handlePress}>
             Click!!
           </PressButton>
-          <PressButton onPress={() => Shop({ itemID: 1, points, setPoints, priceofItem: priceofItem2 })}>
+          <PressButton onPress={() => Shop({ itemID: 1, points, setPoints, priceofItem: priceofItem2, setAutoItemCount })}>
             Double click power ({priceofItem2} points)
           </PressButton>
-          <PressButton onPress={() => Shop({ itemID: 2, points, setPoints, priceofItem: priceofItem })}>
+          <PressButton onPress={() => Shop({ itemID: 2, points, setPoints, priceofItem: priceofItem, setAutoItemCount })}>
             Buy item ({priceofItem} points)
           </PressButton>
         </p>
