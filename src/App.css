@@ -1,5 +1,33 @@
 .App {
+  display: flex;
+  height: 100vh;
+}
+.shop-sidebar h2 {
+  color: white;
   text-align: center;
+}
+.shop-sidebar {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  background-color: #1a1d24;
+  padding: 20px;
+  gap: 10px;
+  overflow-y: auto;
+}
+
+.shop-sidebar button {
+  padding: 10px;
+  font-size: 14px;
+  background-color: #4a7c59;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.shop-sidebar button:hover {
+  background-color: #5a9c70;
 }
 
 .App-logo {
@@ -15,7 +43,7 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
