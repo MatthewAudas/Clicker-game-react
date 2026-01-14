@@ -8,10 +8,10 @@ import Shopdouble from './ShopClick.js';
 let x = 1;
 let priceofItem = 10;
 let priceofItem2 = 20;
-function PressButton({ onPress, children }) {
+function PressButton({ onPress, children, title }) {
   // Exposes an `onPress` prop (React Native style) and maps it to a web `onClick`.
   return (
-    <button type="button" onClick={onPress}>
+    <button type="button" onClick={onPress} title={title}>
       {children}
     </button>
   );
@@ -38,7 +38,7 @@ function App() {
 
   useEffect(() => {
     if (doublePress === 0) return; 
-    x += 2;
+    x += 1;
   }, [doublePress]);
 
   return (
@@ -46,17 +46,21 @@ function App() {
       <header className="App-header">
         <p>Points: {points}</p>
         <p>
-          <PressButton onPress={handlePress}>
+          <PressButton title="Click for points" onPress={handlePress}>
             Click!!
-          </PressButton>
-          <PressButton onPress={() => Shopdouble({ itemID: 1, points, setPoints, priceofItem: priceofItem2, setDoublePress })}>
-            Double click power ({priceofItem2} points)
-          </PressButton>
-          <PressButton onPress={() => Shopauto({ itemID: 2, points, setPoints, priceofItem: priceofItem, setAutoItemCount })}>
-            Buy item ({priceofItem} points)
           </PressButton>
         </p>
       </header>
+      <div className="shop-sidebar">
+        <h2>Shop</h2>
+        <PressButton title="+1 point every 3 seconds" onPress={() => Shopauto({ itemID: 1, points, setPoints, priceofItem: priceofItem, setAutoItemCount })}>
+          Buy item ({priceofItem} points)
+        </PressButton>
+        <PressButton title="Increases your clicking power" onPress={() => Shopdouble({ itemID: 2, points, setPoints, priceofItem: priceofItem2, setDoublePress })}>
+          Buy item ({priceofItem2} points)
+        </PressButton>
+        
+      </div>
     </div>
   );
 }

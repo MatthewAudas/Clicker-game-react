@@ -13,7 +13,7 @@ function Shopauto({ itemID, points, setPoints, priceofItem, setAutoItemCount }) 
 
   setPoints(p => p - priceofItem);
 
-  if (itemID === 2) {
+  if (itemID === 1) {
     // Add buy alert later
     setAutoItemCount(c => c + 1);
   }

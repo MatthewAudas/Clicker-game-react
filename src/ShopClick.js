@@ -12,7 +12,7 @@ function Shopdouble({ itemID, points, setPoints, priceofItem, setDoublePress }) 
 
   setPoints(p => p - priceofItem);
 
-  if (itemID === 1) {
+  if (itemID === 2) {
     // Add buy alert later
     setDoublePress(c => c + 1);
   }
