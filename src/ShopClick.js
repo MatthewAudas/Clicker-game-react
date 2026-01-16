@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+//import React, { useState, useEffect } from 'react';
 import './App.js';
-//import './Shop.css';
+
 
 function Shopdouble({ itemID, points, setPoints, priceofItem, setDoublePress }) {
 

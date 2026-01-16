@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+//import React, { useState, useEffect } from 'react';
 import './App.js';
-//import './Shop.css';
+
 
 
 function Shopauto({ itemID, points, setPoints, priceofItem, setAutoItemCount }) {
@@ -12,7 +12,7 @@ function Shopauto({ itemID, points, setPoints, priceofItem, setAutoItemCount }) 
   }
 
   setPoints(p => p - priceofItem);
-
+  
   if (itemID === 1) {
     // Add buy alert later
     setAutoItemCount(c => c + 1);

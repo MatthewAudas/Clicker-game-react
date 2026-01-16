@@ -35,6 +35,35 @@
   pointer-events: none;
 }
 
+.boss-sidebar {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  background-color: #1a1d24;
+  color: white;
+  padding: 20px;
+  gap: 10px;
+  overflow-y: auto;
+}
+
+.boss-sidebar button {
+  padding: 10px;
+  font-size: 14px;
+  background-color: #9b0929;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.boss-sidebar button:hover {
+  background-color: #ca0b5a;
+}
+
+.boss-sidebar h2 {
+  text-align: center;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -50,6 +79,17 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+.App-header button {
+  padding: 10px;
+  font-size: 14px;
+  background-color: #4a7c59;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 150px;
 }
 
 .App-link {

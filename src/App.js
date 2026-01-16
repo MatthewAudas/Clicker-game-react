@@ -1,15 +1,20 @@
 
-import React, { useEffect, useState} from 'react';
+import React, { use, useEffect, useState} from 'react';
 import './App.css';
 import './ShopAuto.js';
 import Shopauto from './ShopAuto.js';
 import Shopdouble from './ShopClick.js';
+import SpawnBoss from './BossSpawn.js';
 
 let x = 1;
+let bossLevel = 1;
+let cost = 50;
 let priceofItem = 10;
 let priceofItem2 = 20;
+
+
 function PressButton({ onPress, children, title }) {
-  // Exposes an `onPress` prop (React Native style) and maps it to a web `onClick`.
+
   return (
     <button type="button" onClick={onPress} title={title}>
       {children}
@@ -18,13 +23,15 @@ function PressButton({ onPress, children, title }) {
 }
 
 
-
 function App() {
 
   const [points, setPoints] = useState(1);
   const [autoItemCount, setAutoItemCount] = useState(0);
   const [doublePress, setDoublePress] = useState(0);
-  const handlePress = () => setPoints((p) => p + x);
+  const [bossHealth, setBossHealth] = useState(0);
+
+
+  const handlePress = () => setPoints(((p) => p + x));
 
   useEffect(() => {
   if (autoItemCount === 0) return;
@@ -41,8 +48,25 @@ function App() {
     x += 1;
   }, [doublePress]);
 
-  return (
+useEffect(() => {
+  if (bossHealth <= 0) return;
+  bossLevel += 1;
+  cost += 50;
+
+}, [bossHealth]);
+
+
+
+
+
+  return ( 
     <div className="App">
+      <div className="boss-sidebar">
+        <h2>Boss Info</h2>
+        <PressButton title="Boss" onPress={() => SpawnBoss({points, setPoints, cost, setBossHealth})}>Spawn Boss [{cost} points]</PressButton> 
+        <p>Boss Health: {bossHealth}</p>
+        <p>Boss Level: {bossLevel}</p>
+      </div>
       <header className="App-header">
         <p>Points: {points}</p>
         <p>
@@ -59,6 +83,7 @@ function App() {
         <PressButton title="Increases your clicking power" onPress={() => Shopdouble({ itemID: 2, points, setPoints, priceofItem: priceofItem2, setDoublePress })}>
           Buy item ({priceofItem2} points)
         </PressButton>
+        
         
       </div>
     </div>
